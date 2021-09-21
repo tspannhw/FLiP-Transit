@@ -5,11 +5,10 @@ create table transcom (
 `pubDate` STRING, 
 `point` STRING
 ) WITH (
-	'connector.type'    	 = 'kafka',
-	'connector.version' 	 = 'universal',
-	'connector.topic'   	 = 'transcomevents',
-	'connector.startup-mode' = 'earliest-offset',
-	'connector.properties.bootstrap.servers' =  'edge2ai-1.dim.local:9092',
-	'connector.properties.group.id' = 'flink-sql-transcomevents-consumer',
-	'format.type' = 'json'
-)
+  'connector' = 'pulsar',
+  'topic' = 'persistent://public/default/transcom',
+  'value.format' = 'json',
+  'service-url' = 'pulsar://localhost:6650',
+  'admin-url' = 'http://localhost:8080',
+  'scan.startup.mode' = 'earliest' 
+);
