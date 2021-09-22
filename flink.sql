@@ -1,9 +1,12 @@
 create table transcom (
 `uuid` STRING, 
 `ts` STRING,  
-`title` STRING, `description` STRING, 
+`title` STRING, 
+`description` STRING, 
 `pubDate` STRING, 
-`point` STRING
+`point` STRING,
+`latitude` STRING,
+`longitude` STRING
 ) WITH (
   'connector' = 'pulsar',
   'topic' = 'persistent://public/default/transcom',
