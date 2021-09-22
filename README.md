@@ -23,9 +23,12 @@ bin/pulsar-client consume "persistent://public/default/transcom" -s transcom-rea
 create table transcom (
 `uuid` STRING, 
 `ts` STRING,  
-`title` STRING, `description` STRING, 
+`title` STRING, 
+`description` STRING, 
 `pubDate` STRING, 
-`point` STRING
+`point` STRING,
+`latitude` STRING,
+`longitude` STRING
 ) WITH (
   'connector' = 'pulsar',
   'topic' = 'persistent://public/default/transcom',
@@ -35,6 +38,22 @@ create table transcom (
   'scan.startup.mode' = 'earliest' 
 );
 ```
+
+## Data
+
+```
+[ {
+  "title" : "Raritan Valley Line both directions:Elevator Work",
+  "description" : "NJ Transit Rail: Elevator Work on Raritan Valley Line both directions at Newark Penn Station (Newark) Effective immediately and continuing until further notice, the Track A Elevator at Newark Penn Station is temporarily out of service for repairs Not currently Scheduled",
+  "pubDate" : "2020-09-16T23:59:20",
+  "point" : "40.734221,-74.164554",
+  "latitude" : "40.734221",
+  "ts" : "1632316187802",
+  "longitude" : "-74.164554",
+  "uuid" : "8f98265b-f56f-497a-96e0-6de83038aaa7"
+} ]
+```
+
 
 ## List
 
